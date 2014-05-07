@@ -1,9 +1,16 @@
 YouthCamp::Application.routes.draw do
 
+  get "welcome/index"
+  get "registration/new"
+  get "camper/:id" => "registration#show", as: :camper
+  get "registration/update"
   root 'welcome#index'
   get 'about' => 'welcome#about'
   get 'faq' => 'welcome#faq'
   get 'contact' => 'welcome#contact'
+  post "sign_up" => 'registration#sign_up'
+  post "register" => "registration#create"
+
   #  The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

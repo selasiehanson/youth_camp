@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
 
   def index
     @page = 'index'
+    @camper = Camper.new    
   end
 
   def about

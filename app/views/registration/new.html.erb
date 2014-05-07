@@ -1,0 +1,337 @@
+<div class='container'>
+  <h2>Register</h2>
+
+  <%= render "shared/errors" %>
+  <%= form_for :camper, url: register_path, html: {id: "register_form"} do |f| %>
+      <div class='form-group col-md-4 col-sm-4'>
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number, class: 'form-control' %>
+      </div>
+      <div class='form-group col-md-8 col-sm-8'>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :other_names %>
+        <%= f.text_field :other_names, class: 'form-control' %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :gender %> <br>
+        <label class="radio-inline">
+          <%= f.radio_button :gender, "male" %>
+          <%= f.label :gender_male, "Male" %>
+        </label>
+        <label class="radio-inline">
+          <%= f.radio_button :gender, "female" %>
+          <%= f.label :gender_female, "Female" %>
+        </label>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4" id='date_of_birth_container'>
+        <% start_year = 1950; end_year= Time.now.year - 10 ; %>
+        <%= f.label :date_of_birth %>
+        <br>
+        <%= f.date_select :date_of_birth, start_year: start_year, end_year: end_year, with_css_classes: true %>
+      </div>
+
+      <div class='form-group col-md-4 col-sm-4'>
+        <%= f.label :area_of_residence %>
+        <%= f.text_field :residence, class: 'form-control' %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :church %>
+        <%= f.select :church, @churches, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class='form-group col-md-4 col-sm-4' id='otherChurch' class='hide'>
+        <%= f.label :your_church %>
+        <%= f.text_field :other_church, class: 'form-control' %>
+      </div>
+
+      <div class='form-group col-md-4 col-sm-4'>
+        <%= f.label :nationality %>
+        <%= f.select :nationality, @countries, {selected: 'GHANA'}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :role_at_camp %>
+        <%= f.select :role, @roles, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :occupation %> <br>
+        <label class="radio-inline">
+          <%= f.radio_button :occupation, "student" %>
+          <%= f.label :occupation_student, "Student" %>
+        </label>
+        <label class="radio-inline">
+          <%= f.radio_button :occupation, "worker" %>
+          <%= f.label :occupation_worker, "Worker" %>
+        </label>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4 student_details">
+        <%= f.label :school %>
+        <%= f.select :school, @schools, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :your_school %>
+        <%= f.text_field :other_school, class: 'form-control' %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4 student_details">
+        <%= f.label :location_of_school %>
+        <%= f.select :school_location, @locations, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4 ">
+        <%= f.label :other_location_of_school %>
+        <%= f.select :other_school_location, @locations, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4 student_details">
+        <%= f.label :educational_level %>
+        <%= f.select :educational_level, @educational_levels, {}, {class: 'form-control'} %>
+      </div>
+
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :day_of_arrival %>
+        <%= f.select :arrival_day, @arrival_days, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :time_of_arrival %>
+        <%= f.select :arrival_time, @arrival_times, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class='form-group col-md-4 col-sm-4'>
+        <%= f.label :emergency_contact_person %>
+        <%= f.text_field :emergency_contact, class: "form-control" %>
+      </div>
+
+      <div class='form-group col-md-4 col-sm-4'>
+        <%= f.label :emergency_contact_number %>
+        <%= f.text_field :emergency_number, class: "form-control" %>
+      </div>
+
+      <div class='form-group col-md-12'>
+        <%= f.submit "Submit", class: 'btn btn-success', id: 'register_button' %>
+      </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+    (function () {
+        var currentChurch;
+        var currentSchool;
+        var currentSchoolLocation;
+
+        var studentDetails = $(".student_details");
+        var errorBox = $("#error_box");
+        var otherChurch = $("#camper_other_church");
+        var otherSchoolLocation = $("#camper_other_school_location");
+        var otherSchool = $("#camper_other_school");
+
+        //hide what needs to be hidden
+        hideDefaults();
+        function hideDefaults() {
+            studentDetails.hide();
+            otherSchool.parent().hide();
+            otherSchoolLocation.parent().hide();
+            otherChurch.parent().hide();
+        }
+
+        var currentOccupation = $("input[name='camper[occupation]']:checked").val();
+        check_occupation(currentOccupation);
+
+        $("input[name='camper[occupation]']").change(function () {
+            currentOccupation = $(this).val();
+            check_occupation(currentOccupation);
+        });
+
+
+        $("#camper_church").change(function () {
+            currentChurch = $.trim($(this).val());
+            checkChurch(currentChurch);
+        });
+
+        $("#camper_school").change(function () {
+            currentSchool = $.trim($(this).val()).toLocaleLowerCase();
+            checkSchool(currentSchool);
+        });
+
+        $("#camper_school_location").change(function () {
+            currentSchoolLocation = $.trim($(this).val()).toLocaleLowerCase();
+            checkSchoolLocation(currentSchoolLocation);
+        });
+
+        function checkChurch(currentChurch) {
+            if (currentChurch.toLocaleLowerCase() == "other") {
+                otherChurch.parent().show();
+            } else {
+                otherChurch.parent().hide();
+            }
+        }
+
+        function checkSchool(currentSchool) {
+            if (currentSchool == "other")
+                otherSchool.parent().show();
+            else {
+                otherSchool.parent().hide();
+            }
+        }
+
+        function checkSchoolLocation(currentSchoolLocation) {
+            if (currentSchoolLocation == "other") {
+                otherSchoolLocation.parent().show();
+            } else {
+                otherSchoolLocation.parent().hide();
+            }
+        }
+
+        function check_occupation(studentVal) {
+            studentVal = $.trim(studentVal).toLocaleLowerCase();
+            if (studentVal == "worker") {
+                studentDetails.hide();
+            }
+
+            if (studentVal == "student") {
+                studentDetails.show();
+            }
+        }
+
+        $("#register_button").click(function () {
+
+            //todo: validation
+            if (!validate("camper_first_name")) {
+                ErrorMsg("Please provide a First Name");
+                return false;
+            }
+
+            return false;
+
+            if (!validate("camper_last_name")) {
+                ErrorMsg("Please provide a Last Name");
+                return false;
+            }
+
+            // if(!validate('month')){
+            //   ErrorMsg("Please select a Month for the date of Birth");
+            //   return false;
+            // }
+            //
+            // if(!validate('day')){
+            //   ErrorMsg("Please select a Day for the date of Birth");
+            //   return false;
+            // }
+            //
+            // if(!validate('year')){
+            //   ErrorMsg("Please select a Year for the date of Birth");
+            //   return false;
+            // }
+
+
+            if (!validate("camper_residence")) {
+                ErrorMsg("Please provide an Area of residence");
+                return false;
+            }
+
+            //validate church here
+            var church = $("#camper_church").val();
+            if ($.trim(church) == "other") {
+                //var otherChurch = $("#otherChurch").val();
+                if (!validate("camper_other_church")) {
+                    ErrorMsg("Please provide a name for your church");
+                    return false;
+                }
+            }
+
+            var filter = /^\d{10}$/;
+            if (!validate_fon("camper_phone_number", filter)) {
+                ErrorMsg("Please provide a valid 10 digit phone number in this format (xxxxxxxxxx)");
+                return false;
+            }
+
+            if ($.trim(currentOccupation) == "student") {
+                //check school and location
+                var school = $("#camper_school").val();
+
+                if ($.trim(school).toLocaleLowerCase() == "other") {
+                    //check to make sure that other shcool text box has been filled.
+                    if (!validate("camper_other_school")) {
+                        ErrorMsg("Please provide a name for your school");
+                        return false;
+                    }
+                }
+
+                var schoolLocation = $("#camper_school_location").val();
+                if ($.trim(schoolLocation).toLocaleLowerCase() == 'other') {
+                    if (!validate("camper_other_school_location")) {
+                        ErrorMsg("Please provide location for your school");
+                        return false;
+                    }
+                }
+            }
+
+            if (!validate("camper_emergency_contact")) {
+                ErrorMsg("Please provide a name for an Emergency Contact");
+                return false;
+            }
+
+            if (!validate_fon("camper_emergency_number", filter)) {
+                ErrorMsg("Please provide a valid 10 digit phone number for your Emergency Contact");
+                return false;
+            }
+
+
+        });
+
+        function ErrorMsg(message) {
+            errorBox.find("p").text(message);
+            errorBox.show();
+        }
+
+        function validate(id) {
+            var _id = $("#" + id);
+            var val = $.trim(_id.val());
+
+            if (val == "") {
+                _id.parents(".").addClass("error");
+                return false;
+            }
+            else
+                return true;
+        }
+
+        function validate_fon(id, filter) {
+            var _id = $("#" + id);
+            var val = $.trim(_id.val());
+            if (!filter.test(val)) {
+                _id.parents(".").addClass("error");
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function clear() {
+            //hide the error box and clear all control groups
+            errorBox.hide();
+            $(".").removeClass("error");
+        }
+
+    })();
+
+</script>
