@@ -2,24 +2,102 @@
   <div class="container">
     <h1>Welcome</h1>
     <div id="camp_wrapper">
-      <%= form_for (@camper),url: sign_up_path,  html: {class: 'form-inline', role: 'form'} do |f| %>
+      <%= form_for (@camper),url: sign_up_path,  html: {class: '', role: 'form'} do |f| %>
           <%= render 'shared/errors' %>
 
           <% flash.each do |name, msg| -%>
             <%= content_tag :div, msg, class: "error-box alert alert-#{name}" %>
           <% end -%>
+          <div id="errorBox" class="error-box alert alert-danger">
+            <span id="message"></span>
+          </div>
 
         <div class="form-group">
           <%= f.label :email_address , class: 'sr-only'%>
           <%= f.text_field :email , class: 'join_camp_email form-control input-lg ',placeholder: "Enter email Address"%>
         </div>
         <div class="form-group">
+          <%= f.label :confirm_email_address, class: 'sr-only'%>
+          <input type="input" name="" value="" id="confirm_email" class="join_camp_email form-control input-lg" placeholder="Confirm email Address">
+        </div>
+        <div class="form-group">
           <%= f.label :phone_number , class: 'sr-only'%>
           <%= f.text_field :phone_number , class: 'join_camp_email form-control input-lg ',placeholder: "Phone Number"%>
         </div>
-        <%= f.submit "Sing up", class: "camp_button btn btn-success btn-lg" %>
+        <div class="form-group">
+          <%= f.label :phone_number , class: 'sr-only'%>
+          <input type="input" name="" value="" id="confirm_phone_number" class="join_camp_email form-control input-lg" placeholder="Confirm Phone Number">
+        </div>
+        <%= f.submit "Register", class: "camp_button btn btn-success btn-lg", id: 'register_button' %>
        <% end %>
 
     </div>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  (function (){
+    var ids = ['camper_email', 'confirm_email', 'camper_phone_number', 'confirm_phone_number'];
+
+    var email = $("#"+ids[0]);
+    var emailConfirm = $("#"+ids[1]);
+    var phoneNumber = $("#"+ids[2]);
+    var phoneNumberConfirm = $("#"+ids[3]);
+
+    var errorBox = $("#errorBox");
+    var ERR_MESSAGES = {
+      EMAIL_BLANK: "Email cannot be blank",
+      PHONE_NUMBER_BLANK: "Phone number cannot be blank",
+      EMAIL: "Emails are not the same",
+      PHONE_NUMBER: "Phone Numbers are not the same",
+    }
+
+    errorBox.hide();
+
+    for(var i =0; i < ids.length; i++){
+        var id = "#" + ids[i];
+        $(id).bind('copy paste', function (e) {
+           e.preventDefault();
+        });
+    }
+
+    $("#register_button").on('click', function (e){
+      errorBox.hide();
+      function areEmailsTheSame(){
+        return email.val() === emailConfirm.val();
+      }
+
+      function arePhoneNumbersTheSame(){
+        return phoneNumber.val() === phoneNumberConfirm.val();
+      }
+
+      function showError(message){
+        errorBox.find("#message").text(message);
+        errorBox.show();
+        e.preventDefault();
+      }
+
+      if($.trim(email.val()) === ""){
+        showError(ERR_MESSAGES.EMAIL_BLANK)
+        return false;
+      }
+
+      if($.trim(phoneNumber.val()) === ""){
+        showError(ERR_MESSAGES.PHONE_NUMBER_BLANK)
+        return false;
+      }
+
+      if(!areEmailsTheSame()){
+        showError(ERR_MESSAGES.EMAIL);
+        return false;
+      }
+
+      if(!arePhoneNumbersTheSame()){
+        showError(ERR_MESSAGES.PHONE_NUMBER);
+        return false;
+      }
+
+    })
+
+  })();
+</script>
