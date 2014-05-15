@@ -2,8 +2,7 @@ class WelcomeController < ApplicationController
 
   def index
     @images = %w(02 04 05 07)
-    @page = 'index'
-    @camper = Camper.new    
+    @page = 'index'    
   end
 
   def about

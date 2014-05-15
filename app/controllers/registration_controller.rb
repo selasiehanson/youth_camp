@@ -4,8 +4,7 @@ class RegistrationController < ApplicationController
 
   end
 
-  def show
-
+  def show   
   end
 
   def create
