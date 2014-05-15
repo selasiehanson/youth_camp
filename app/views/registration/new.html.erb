@@ -254,7 +254,7 @@
         $("#register_button").click(function (e) {
 
 
-           errorBox.hide();
+            errorBox.hide();
             function areEmailsTheSame(){
               return email.val() === emailConfirm.val();
             }
@@ -289,15 +289,11 @@
               return false;
             }
 
-
-
             //todo: validation
             if (!validate("camper_first_name")) {
                 ErrorMsg("Please provide a First Name");
                 return false;
-            }
-
-            return false;
+            }            
 
             if (!validate("camper_last_name")) {
                 ErrorMsg("Please provide a Last Name");
@@ -371,7 +367,6 @@
                 ErrorMsg("Please provide a valid 10 digit phone number for your Emergency Contact");
                 return false;
             }
-
 
         });
 

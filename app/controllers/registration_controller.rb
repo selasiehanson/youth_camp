@@ -10,6 +10,7 @@ class RegistrationController < ApplicationController
   def create
     camper = CamperFormObject.to_camper(CamperFormObject.new(camper_params.to_h))
     if camper.save
+      sign_in camper
       redirect_to camper
     else
       setup_view
