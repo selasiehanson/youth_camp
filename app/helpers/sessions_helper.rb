@@ -18,8 +18,6 @@ module SessionsHelper
   end
 
   def current_user
-    puts "SESSION ID IS"
-    p session[:current_user_id]
     @_current_user ||= session[:current_user_id] && Camper.find(session[:current_user_id])
 
   end

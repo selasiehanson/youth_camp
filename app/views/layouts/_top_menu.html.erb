@@ -15,6 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav y-nav-links">
         <li class="<%= is_active_page(@page, 'about') %>"> <%= link_to "ABOUT", :about %> </li>
+        <li class="<%= is_active_page(@page, 'media') %>"> <%= link_to 'MEDIA', :media %> </li>
         <li class="<%= is_active_page(@page, 'faq') %>"> <%= link_to "FAQ", :faq %> </li>
         <li class="<%= is_active_page(@page, 'contact') %>"> <%= link_to 'CONTACT', :contact %> </li>
         </ul>
