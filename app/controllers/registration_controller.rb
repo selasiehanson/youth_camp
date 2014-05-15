@@ -57,7 +57,7 @@ class RegistrationController < ApplicationController
     end
     phone_number = params[:camper][:phone_number]
     email = params[:camper][:email]
-    camper =
+    # camper =
     if Camper.find_by(email: email, phone_number: phone_number)
       # add errors
       flash[:danger] = 'A camper with the same credential already exists.

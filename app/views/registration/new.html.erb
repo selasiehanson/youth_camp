@@ -2,15 +2,30 @@
   <h2>Register</h2>
 
   <%= render "shared/errors" %>
+   <div id="errorBox" class="error-box alert alert-danger">
+    <span id="message"></span>
+  </div>
   <%= form_for :camper, url: register_path, html: {id: "register_form"} do |f| %>
-      <div class='form-group col-md-4 col-sm-4'>
-        <%= f.label :phone_number %>
-        <%= f.text_field :phone_number, class: 'form-control' %>
-      </div>
-      <div class='form-group col-md-8 col-sm-8'>
+      <div class='form-group col-md-3 col-sm-3'>
         <%= f.label :email %>
         <%= f.text_field :email, class: 'form-control' %>
       </div>
+      
+      <div class='form-group col-md-3 col-sm-3'>
+        <%= f.label :confirm_email_address %>
+        <input type="input" name="" value="" id="confirm_email" class="form-control" >
+      </div>
+
+      <div class='form-group col-md-3 col-sm-3'>
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number, class: 'form-control' %>
+      </div>
+
+      <div class='form-group col-md-3 col-sm-3'>
+        <%= f.label :confirm_phone_number %>
+        <input type="input" name="" value="" id="confirm_phone_number" class="form-control" >        
+      </div>
+      
       <div class="form-group col-md-4 col-sm-4">
         <%= f.label :first_name %>
         <%= f.text_field :first_name, class: 'form-control' %>
@@ -144,6 +159,30 @@
         var otherSchoolLocation = $("#camper_other_school_location");
         var otherSchool = $("#camper_other_school");
 
+        var ids = ['camper_email', 'confirm_email', 'camper_phone_number', 'confirm_phone_number'];
+
+        var email = $("#"+ids[0]);
+        var emailConfirm = $("#"+ids[1]);
+        var phoneNumber = $("#"+ids[2]);
+        var phoneNumberConfirm = $("#"+ids[3]);
+
+        var errorBox = $("#errorBox");
+        var ERR_MESSAGES = {
+          EMAIL_BLANK: "Email cannot be blank",
+          PHONE_NUMBER_BLANK: "Phone number cannot be blank",
+          EMAIL: "Emails are not the same",
+          PHONE_NUMBER: "Phone Numbers are not the same",
+        }
+
+        errorBox.hide();
+
+        for(var i =0; i < ids.length; i++){
+            var id = "#" + ids[i];
+            $(id).bind('copy paste', function (e) {
+               e.preventDefault();
+            });
+        }
+
         //hide what needs to be hidden
         hideDefaults();
         function hideDefaults() {
@@ -212,7 +251,45 @@
             }
         }
 
-        $("#register_button").click(function () {
+        $("#register_button").click(function (e) {
+
+
+           errorBox.hide();
+            function areEmailsTheSame(){
+              return email.val() === emailConfirm.val();
+            }
+
+            function arePhoneNumbersTheSame(){
+              return phoneNumber.val() === phoneNumberConfirm.val();
+            }
+
+            function showError(message){
+              errorBox.find("#message").text(message);
+              errorBox.show();
+              e.preventDefault();
+            }
+
+            if($.trim(email.val()) === ""){
+              showError(ERR_MESSAGES.EMAIL_BLANK)
+              return false;
+            }
+
+            if($.trim(phoneNumber.val()) === ""){
+              showError(ERR_MESSAGES.PHONE_NUMBER_BLANK)
+              return false;
+            }
+
+            if(!areEmailsTheSame()){
+              showError(ERR_MESSAGES.EMAIL);
+              return false;
+            }
+
+            if(!arePhoneNumbersTheSame()){
+              showError(ERR_MESSAGES.PHONE_NUMBER);
+              return false;
+            }
+
+
 
             //todo: validation
             if (!validate("camper_first_name")) {

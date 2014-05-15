@@ -35,6 +35,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'guard-livereload'
+end
+
 
 ruby "2.1.0"
 

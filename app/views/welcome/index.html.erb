@@ -1,38 +1,76 @@
-<div id="name">
+<div class="container">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <!-- <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol> -->
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <% @images.each_with_index do |image, idx| %>
+        <% klass = idx==0 ? 'item active' : 'item' %>
+        <div class="<%= "#{klass}" %>">
+            <%= image_tag "/assets/web-banner-#{image}.jpg"  %>
+        </div>    
+      <% end %> 
+        <%# image_tag('/assets/web-banner-03.jpg') %>      
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+</div>
+<!-- <div id="banner" class="bg1">
+</div> -->
+
+<br>
+<div class="row commitee-message">
   <div class="container">
-    <h1>Welcome</h1>
-    <div id="camp_wrapper">
-      <%= form_for (@camper),url: sign_up_path,  html: {class: '', role: 'form'} do |f| %>
-          <%= render 'shared/errors' %>
-
-          <% flash.each do |name, msg| -%>
-            <%= content_tag :div, msg, class: "error-box alert alert-#{name}" %>
-          <% end -%>
-          <div id="errorBox" class="error-box alert alert-danger">
-            <span id="message"></span>
-          </div>
-
-        <div class="form-group">
-          <%= f.label :email_address , class: 'sr-only'%>
-          <%= f.text_field :email , class: 'join_camp_email form-control input-lg ',placeholder: "Enter email Address"%>
-        </div>
-        <div class="form-group">
-          <%= f.label :confirm_email_address, class: 'sr-only'%>
-          <input type="input" name="" value="" id="confirm_email" class="join_camp_email form-control input-lg" placeholder="Confirm email Address">
-        </div>
-        <div class="form-group">
-          <%= f.label :phone_number , class: 'sr-only'%>
-          <%= f.text_field :phone_number , class: 'join_camp_email form-control input-lg ',placeholder: "Phone Number"%>
-        </div>
-        <div class="form-group">
-          <%= f.label :phone_number , class: 'sr-only'%>
-          <input type="input" name="" value="" id="confirm_phone_number" class="join_camp_email form-control input-lg" placeholder="Confirm Phone Number">
-        </div>
-        <%= f.submit "Register", class: "camp_button btn btn-success btn-lg", id: 'register_button' %>
-       <% end %>
-
+    <div class="col-lg-12 col-md-12  lead">
+      <h3>Message from comittee</h3>
+      Accra Ridge Church youth presents  Youth Camp  2014 dubbed  
+      <b> “Come up hither” </b> based on the scriptures Rev 4:1b & Phil 3:14. This year camp seeks to emphasize the fact that there is really no limit to this walk of faith. It is in fact a limitless (eternal) walk. Where ever one finds oneself there is always a greater glory to attain. Are you unsaved? Get saved. Are you redeemed? Work out your salvation. Are you working? Manifest that glory. For The Lord seeks purified vessels of honor through whom He can establish His perfect plans He has for the church, the academy, and the work place. Youth Camp 2014! come lets seek more from our Father.
+    </div>    
+  </div>    
+</div>
+<div class="container">
+  
+  <div class="row testimonies">
+    <div class="col-lg-12 col-md-12">
+    <h2>Testimonies</h2>
+  </div>
+  <div class="col-lg-6 col-md-6 testimony">
+    <div class="message">
+      <div class="pull-left image">
+        <%= image_tag('/assets/robin.JPG') %>
+      </div>
+      My first time in Accra Ridge Church Youth Camp was in 2012. Before my camp experience i knew God was now not just our God but our Father. The problem I had was identifying this fact in my everyday life. I had also gotten to a point where I thought I didn't deserve to be loved by God because I had little sins that kept pulling me down in my Christian faith. Camp changed all that. 
+      It was a platform where I learnt the unadulterated truth about God's love for us and who he really is to us as a Father. My life from that time till date has never been the same. My walk with my heavenly Father has been more intimate and I see it reflecting in my everyday life.
+      I still go to ARC youth Camps any time it happens and my knowledge in Christ and fellowship with the Holy Spirit keeps growing.
+      <div class="name">Robin-Huws Barnes </div>
     </div>
   </div>
+  <div class="col-lg-6 col-md-6 testimony">
+    <div class="message">
+    <div class="pull-left image">
+        <%= image_tag('/assets/sena.jpg') %>
+      </div>
+        Initially I wasn't planning on going for camp because I felt I'll be going through the usual routines. I ended up there anyway. ​I felt empty and felt like God was always so far away​. My prayer throughout camp was to develop a closer and more intimate relationship with God. I decided i would try and allow the Holy Spirit to take control at camp.
+      Everyday I learnt something new. My prayers began to chane from the usual asking for things to prayers of intercession and even praise. Usually when asked to pray for someone, i find it very difficult, but that changed at camp. The more I prayed for people, the more compassion I began to feel. I believe God was teaching me How to love.
+      At some point He started to speak through me, He seemed upset. He kept saying "Open up your hearts". it was a bit overwhelming. 
+      All in all it was a great experience and it made me learn to love God more and know just how real He is. 
+      <div class="name">Sena Anthony</div>
+    </div>
+  </div>  
+  </div> 
+  
 </div>
 
 <script type="text/javascript" charset="utf-8">
