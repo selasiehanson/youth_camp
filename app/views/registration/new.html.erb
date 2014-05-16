@@ -1,7 +1,10 @@
-<div class='container'>
-  <h2>Register</h2>
+<div class='container my-content'>
+  <h3>Register</h3>
 
   <%= render "shared/errors" %>
+    <% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: "error-box alert alert-#{name}" %>
+  <% end -%>
    <div id="errorBox" class="error-box alert alert-danger">
     <span id="message"></span>
   </div>
@@ -166,7 +169,7 @@
         var phoneNumber = $("#"+ids[2]);
         var phoneNumberConfirm = $("#"+ids[3]);
 
-        var errorBox = $("#errorBox");
+        var errorBox = $(".error-box");
         var ERR_MESSAGES = {
           EMAIL_BLANK: "Email cannot be blank",
           PHONE_NUMBER_BLANK: "Phone number cannot be blank",
@@ -252,8 +255,6 @@
         }
 
         $("#register_button").click(function (e) {
-
-
             errorBox.hide();
             function areEmailsTheSame(){
               return email.val() === emailConfirm.val();

@@ -1,4 +1,9 @@
-@mixin customBackground(){
+$menu_link_color: white;
+$header_background_color: #3c0147;
+$body_background: #f3f3f3;
+$header_text_color: #610772;
+
+@mixin customBackground {
     display: block;
     overflow: hidden;
     background-position: center top;
@@ -8,7 +13,38 @@
 }
 
 body {
-    padding-top: 60px;
+    padding-top: 50px;
+    background: $body_background;
+}
+
+h1,h2, h3, h4, h5 {
+    color: $header_text_color;
+}
+
+.navbar-default {
+    background: $header_background_color;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: $menu_link_color;
+}
+
+.navbar-default .navbar-brand {
+    color: $menu_link_color;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: #999;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #222;
+    background-color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #999;
+    // background-color: white;
 }
 
 .buttons {
@@ -40,7 +76,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background: image-url("web-banner-04.jpg");
-    @include customBackground();
+    @include customBackground;
     @media all and (max-width: 768px) {
         // padding: 50px 0 0;
         // @include customBackground();
@@ -116,9 +152,19 @@ body {
     width: 260px;
 }
 
+$committe_border: #dedede;
+
 .commitee-message {
-    background: #6F0131;
-    color: white;
+    line-height: 30px;
+    background: white;
+    border: 1px solid $committe_border;
+    .highlight {
+        font-weight: bold;
+        color: $header_text_color;
+    }
+    .lead {
+        line-height: 35px;
+    }
 }
 
 #date_of_birth_container {
@@ -153,16 +199,16 @@ body {
 }
 
 .testimonies {
-    background: #f3f3f3;
-    .testimony{
-        .message{
+    background: white;
+    .testimony {
+        .message {
             line-height: 22px;
             color: #4e4e4e;
-            .image{
-                padding-right: 10px;                                
+            .image {
+                padding-right: 10px;
             }
         }
-        .name{
+        .name {
             margin-top: 5px;
             font-weight: bold;
             margin-bottom: 30px;
@@ -170,6 +216,16 @@ body {
     }
 }
 
+.my-content {
+    background: white;
+    height: 100%;
+    border-left: 1px solid #dedede;
+    border-right: 1px solid #dedede;
+}
+
+.my-carousel-box {
+    background: #F3F3F3;
+}
 
 .carousel-control {
     position: absolute;
@@ -183,6 +239,7 @@ body {
     // text-align: center;
     // background: #222;
 }
+
 .carousel-control .icon-next, .carousel-control .glyphicon-chevron-right {
     right: 10%;
 }
