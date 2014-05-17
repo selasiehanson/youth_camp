@@ -1,6 +1,7 @@
 class Camper
   include Mongoid::Document
 
+  field :is_admin, type: Boolean, default: false
   field :first_name, type: String
   field :last_name, type: String
   field :other_names, type: String

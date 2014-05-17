@@ -1,6 +1,6 @@
 class CamperFormObject
 
-  attr_accessor :first_name, :last_name, :other_names,
+  attr_accessor :is_admin, :first_name, :last_name, :other_names,
                 :gender, :date_of_birth, :email, :nationality,
                 :arrival_day, :arrival_time,
                 :phone_number, :residence, :role,
@@ -59,6 +59,7 @@ class CamperFormObject
 
   def self.to_camper(form_object)
     camper = Camper.new
+    camper.is_admin = form_object.is_admin
     camper.email = form_object.email
     camper.phone_number = form_object.phone_number
     camper.first_name = form_object.first_name
@@ -116,6 +117,7 @@ class CamperFormObject
 
   def self.from_camper(camper)
     form_camper = CamperFormObject.new(nil, nil)
+    form_camper.is_admin = camper.is_admin
     form_camper.email = camper.email
     form_camper.phone_number = camper.phone_number
     form_camper.first_name = camper.first_name
