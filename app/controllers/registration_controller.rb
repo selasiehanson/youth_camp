@@ -27,7 +27,7 @@ class RegistrationController < ApplicationController
     status = camper_exists(@camper)
     if status[0] == true
       flash[:danger] = status[1]
-      # setup_view
+      setup_view
       # @camper = CamperFormObject.from_camper(camper)
       render action: 'new'
     end

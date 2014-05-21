@@ -77,7 +77,7 @@ class CamperFormObject
     camper.emergency_number = form_object.emergency_number
     camper.date_of_birth = form_object.date_of_birth
 
-    if form_object.church == 'other'
+    if form_object.church.downcase == 'other'
       camper.church ={
           type: 'other',
           name: form_object.other_church
@@ -89,7 +89,7 @@ class CamperFormObject
       }
     end
 
-    if form_object.occupation == 'student'
+    if form_object.occupation.downcase == 'student'
       camper.occupation = {
           type: 'student',
           school_location: form_object.school_location,
@@ -137,24 +137,24 @@ class CamperFormObject
     form_camper.emergency_number = camper.emergency_number
     form_camper.date_of_birth = camper.date_of_birth.class == String ? Date.parse(camper.date_of_birth) : camper.date_of_birth
 
-    if camper.church['type'] == 'default'
+    if camper.church['type'].downcase == 'default'
       form_camper.church = camper.church['name']
     else
-      form_camper.church = 'other'
+      form_camper.church = 'Other' #watch this it can't be 'other' in small letters
       form_camper.other_church = camper.church['name']
     end
 
-    if camper.occupation['type'] == 'student'
+    if camper.occupation['type'].downcase == 'student'
 
       form_camper.educational_level = camper.occupation['educational_level']
 
-      if camper.occupation['school_type'] == 'other'
+      if camper.occupation['school_type'].downcase == 'other'
         form_camper.other_school = camper.occupation['school']
       else
         form_camper.school = camper.occupation['school']
       end
 
-      if camper.occupation['school_location_type'] == 'other'
+      if camper.occupation['school_location_type'].downcase == 'other'
         form_camper.other_school_location = camper.occupation['school_location']
       else
         form_camper.school_location = camper.occupation['school_location']

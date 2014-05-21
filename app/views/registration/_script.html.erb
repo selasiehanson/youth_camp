@@ -34,8 +34,7 @@
             });
         }
 
-        //hide what needs to be hidden
-        
+        //hide what needs to be hidden        
         function hideDefaults() {
             studentDetails.hide();
             otherSchool.parent().hide();
@@ -44,17 +43,18 @@
         }
         hideDefaults();        
         
-
+        var ourChurch = $("#camper_form_object_church");
         var currentOccupation = $("input[name='camper_form_object[occupation]']:checked").val();
-        check_occupation(currentOccupation);
+        checkOccupation(currentOccupation);
+        checkChurch(ourChurch.val());
 
         $("input[name='camper_form_object[occupation]']").change(function () {
             currentOccupation = $(this).val();
-            check_occupation(currentOccupation);
+            checkOccupation(currentOccupation);
         });
 
-
-        $("#camper_form_object_church").change(function () {
+        
+        ourChurch.change(function () {
             currentChurch = $.trim($(this).val());
             checkChurch(currentChurch);
         });
@@ -93,7 +93,7 @@
             }
         }
 
-        function check_occupation(studentVal) {
+        function checkOccupation(studentVal) {
             studentVal = $.trim(studentVal).toLocaleLowerCase();
             if (studentVal == "worker") {
                 studentDetails.hide();

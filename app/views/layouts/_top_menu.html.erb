@@ -20,10 +20,11 @@
         <li class="<%= is_active_page(@page, 'contact') %>"> <%= link_to 'CONTACT', :contact %> </li>
         </ul>
         <ul class="buttons">
+          
+        <% if signed_in? %>
           <li class="top-buttons"> 
             <%= link_to 'MY DETAILS', camper_path,  :class => 'btn btn-info' %>
           </li> 
-        <% if signed_in? %>
           <li class="top-buttons">               
               <%= link_to 'LOGOUT', signout_path,  method: "delete", :class => 'btn btn-danger' %>
            </li>
