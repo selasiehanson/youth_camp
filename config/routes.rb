@@ -4,6 +4,7 @@ YouthCamp::Application.routes.draw do
   get "welcome/index"
   get "registration/new"
   get "camper" => "registration#show", as: :camper
+  # get "camper/:id" => "registration#edit", as: :camper_edit
   get "registration/edit"
   root 'welcome#index'
   get 'about' => 'welcome#about'
@@ -13,8 +14,11 @@ YouthCamp::Application.routes.draw do
   post "sign_up" => 'registration#sign_up'
   get 'login' => 'sessions#new'
   post "register" => "registration#create"
+  put 'update_details' => "registration#update"
+  get 'print' => 'registration#print'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   resources :sessions, only: [:create]
+  resources :registration
 
   #  The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

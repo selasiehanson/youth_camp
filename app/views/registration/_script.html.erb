@@ -1,0 +1,252 @@
+  <script type="text/javascript">
+    (function () {
+        var currentChurch;
+        var currentSchool;
+        var currentSchoolLocation;
+
+        var studentDetails = $(".student_details");
+        var errorBox = $("#error_box");
+        var otherChurch = $("#camper_form_object_other_church");
+        var otherSchoolLocation = $("#camper_form_object_other_school_location");
+        var otherSchool = $("#camper_form_object_other_school");
+
+        var ids = ['camper_form_object_email', 'camper_form_object_confirm_email', 'camper_form_object_phone_number', 'camper_form_object_confirm_phone_number'];
+
+        var email = $("#"+ids[0]);
+        var emailConfirm = $("#"+ids[1]);
+        var phoneNumber = $("#"+ids[2]);
+        var phoneNumberConfirm = $("#"+ids[3]);
+
+        var errorBox = $(".error-box");
+        var ERR_MESSAGES = {
+          EMAIL_BLANK: "Email cannot be blank",
+          PHONE_NUMBER_BLANK: "Phone number cannot be blank",
+          EMAIL: "Emails are not the same",
+          PHONE_NUMBER: "Phone Numbers are not the same",
+        }
+
+        errorBox.hide();
+
+        for(var i =0; i < ids.length; i++){
+            var id = "#" + ids[i];
+            $(id).bind('copy paste', function (e) {
+               e.preventDefault();
+            });
+        }
+
+        //hide what needs to be hidden
+        
+        function hideDefaults() {
+            studentDetails.hide();
+            otherSchool.parent().hide();
+            otherSchoolLocation.parent().hide();
+            otherChurch.parent().hide();
+        }
+        hideDefaults();        
+        
+
+        var currentOccupation = $("input[name='camper_form_object[occupation]']:checked").val();
+        check_occupation(currentOccupation);
+
+        $("input[name='camper_form_object[occupation]']").change(function () {
+            currentOccupation = $(this).val();
+            check_occupation(currentOccupation);
+        });
+
+
+        $("#camper_form_object_church").change(function () {
+            currentChurch = $.trim($(this).val());
+            checkChurch(currentChurch);
+        });
+
+        $("#camper_form_object_school").change(function () {
+            currentSchool = $.trim($(this).val()).toLocaleLowerCase();
+            checkSchool(currentSchool);
+        });
+
+        $("#camper_form_object_school_location").change(function () {
+            currentSchoolLocation = $.trim($(this).val()).toLocaleLowerCase();
+            checkSchoolLocation(currentSchoolLocation);
+        });
+
+        function checkChurch(currentChurch) {
+            if (currentChurch.toLocaleLowerCase() == "other") {
+                otherChurch.parent().show();
+            } else {
+                otherChurch.parent().hide();
+            }
+        }
+
+        function checkSchool(currentSchool) {
+            if (currentSchool == "other")
+                otherSchool.parent().show();
+            else {
+                otherSchool.parent().hide();
+            }
+        }
+
+        function checkSchoolLocation(currentSchoolLocation) {
+            if (currentSchoolLocation == "other") {
+                otherSchoolLocation.parent().show();
+            } else {
+                otherSchoolLocation.parent().hide();
+            }
+        }
+
+        function check_occupation(studentVal) {
+            studentVal = $.trim(studentVal).toLocaleLowerCase();
+            if (studentVal == "worker") {
+                studentDetails.hide();
+            }
+
+            if (studentVal == "student") {
+                studentDetails.show();
+            }
+        }
+
+        $("#register_button").click(function (e) {
+            errorBox.hide();
+            function areEmailsTheSame(){
+              return email.val() === emailConfirm.val();
+            }
+
+            function arePhoneNumbersTheSame(){
+              return phoneNumber.val() === phoneNumberConfirm.val();
+            }
+
+            function showError(message){
+              errorBox.find("#message").text(message);
+              errorBox.show();
+              e.preventDefault();
+            }
+
+            function validate(id) {
+                var _id = $("#" + id);
+                var val = $.trim(_id.val());
+                console.log(_id)
+                if (val === "") {
+                    _id.parents(".form-group").addClass("error");
+                    return false;
+                }
+                else
+                    return true;
+            }
+
+            function validate_fon(id, filter) {
+                var _id = $("#" + id);
+                var val = $.trim(_id.val());
+                if (!filter.test(val)) {
+                    _id.parents(".form-group").addClass("error");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            function clear() {
+                //hide the error box and clear all control groups
+                errorBox.hide();
+                $(".").removeClass("error");
+            }
+
+            if($.trim(email.val()) === ""){
+              showError(ERR_MESSAGES.EMAIL_BLANK)
+              return false;
+            }
+
+            if($.trim(phoneNumber.val()) === ""){
+              showError(ERR_MESSAGES.PHONE_NUMBER_BLANK)
+              return false;
+            }
+
+            var filter = /^\d{10}$/;
+            if (!validate_fon("camper_form_object_phone_number", filter)) {
+                showError("Please provide a valid 10 digit phone number in this format (xxxxxxxxxx)");
+                return false;
+            }
+
+            if(!areEmailsTheSame()){
+              showError(ERR_MESSAGES.EMAIL);
+              return false;
+            }
+
+            if(!arePhoneNumbersTheSame()){
+              showError(ERR_MESSAGES.PHONE_NUMBER);
+              return false;
+            }
+
+            //todo: validation
+            if (!validate("camper_form_object_first_name")) {
+                showError("Please provide a First Name");
+                return false;
+            }            
+
+            if (!validate("camper_form_object_last_name")) {
+                showError("Please provide a Last Name");
+                return false;
+            }            
+
+
+            if(!$("input[name='camper_form_object[gender]']:checked").val()){
+              showError("Please select a gender");
+              return false;
+            }
+
+            if (!validate("camper_form_object_residence")) {
+                showError("Please provide an Area of residence");
+                return false;
+            }
+
+            var church = $("#camper_form_object_church").val();
+            if ($.trim(church) == "other") {
+                //var otherChurch = $("#otherChurch").val();
+                if (!validate("camper_form_object_other_church")) {
+                    showError("Please provide a name for your church");
+                    return false;
+                }
+            }
+           
+            if(!$("input[name='camper_form_object[occupation]']:checked").val()){
+              showError("Please select an occupation");
+              return false;
+            }
+
+            currentOccupation = $("input[name='camper_form_object[occupation]']:checked").val();
+            if ($.trim(currentOccupation) == "student") {
+                //check school and location
+                var school = $("#camper_form_object_school").val();
+
+                if ($.trim(school).toLocaleLowerCase() === "other") {
+                    //check to make sure that other shcool text box has been filled.
+                    if (!validate("camper_form_object_other_school")) {
+                        showError("Please provide a name for your school");
+                        return false;
+                    }
+                }
+
+                var schoolLocation = $("#camper_form_object_school_location").val();
+                if ($.trim(schoolLocation).toLocaleLowerCase() == 'other') {
+                    if (!validate("camper_form_object_other_school_location")) {
+                        showError("Please provide location for your school");
+                        return false;
+                    }
+                }
+            }
+
+            if (!validate("camper_form_object_emergency_contact")) {
+                showError("Please provide a name for an Emergency Contact");
+                return false;
+            }
+
+            if (!validate_fon("camper_form_object_emergency_number", filter)) {
+                showError("Please provide a valid 10 digit phone number for your Emergency Contact");
+                return false;
+            }
+
+        });
+
+        
+
+    })();
+
+</script>

@@ -1,9 +1,9 @@
 class CamperFormObject
 
   attr_accessor :is_admin, :first_name, :last_name, :other_names,
-                :gender, :date_of_birth, :email, :nationality,
+                :gender, :date_of_birth, :email, :confirm_email, :nationality,
                 :arrival_day, :arrival_time,
-                :phone_number, :residence, :role,
+                :phone_number, :confirm_phone_number, :residence, :role,
                 :emergency_contact, :emergency_number,
                 :church, :other_church,
                 :occupation, :school, :school_location, :educational_level,
@@ -61,7 +61,9 @@ class CamperFormObject
     camper = Camper.new
     camper.is_admin = form_object.is_admin
     camper.email = form_object.email
+    camper.confirm_email = form_object.confirm_email
     camper.phone_number = form_object.phone_number
+    camper.confirm_phone_number = form_object.confirm_phone_number
     camper.first_name = form_object.first_name
     camper.last_name = form_object.last_name
     camper.other_names = form_object.other_names
@@ -119,7 +121,9 @@ class CamperFormObject
     form_camper = CamperFormObject.new(nil, nil)
     form_camper.is_admin = camper.is_admin
     form_camper.email = camper.email
+    form_camper.confirm_email = camper.confirm_email
     form_camper.phone_number = camper.phone_number
+    form_camper.confirm_phone_number = camper.confirm_phone_number
     form_camper.first_name = camper.first_name
     form_camper.last_name = camper.last_name
     form_camper.other_names = camper.other_names
@@ -133,32 +137,31 @@ class CamperFormObject
     form_camper.emergency_number = camper.emergency_number
     form_camper.date_of_birth = camper.date_of_birth.class == String ? Date.parse(camper.date_of_birth) : camper.date_of_birth
 
-    if camper.church[:type] == 'default'
-      form_camper.church = camper.church[:name]
+    if camper.church['type'] == 'default'
+      form_camper.church = camper.church['name']
     else
       form_camper.church = 'other'
-      form_camper.other_church = camper.church[:name]
+      form_camper.other_church = camper.church['name']
     end
 
-    if camper.occupation[:type] == 'student'
+    if camper.occupation['type'] == 'student'
 
-      form_camper.educational_level = camper.occupation[:educational_level]
-      # @other_school = camper.other_school
+      form_camper.educational_level = camper.occupation['educational_level']
 
-      if camper.occupation[:school_type] == 'other'
-        form_camper.other_school = camper.occupation[:school]
+      if camper.occupation['school_type'] == 'other'
+        form_camper.other_school = camper.occupation['school']
       else
-        form_camper.school = camper.occupation[:school]
+        form_camper.school = camper.occupation['school']
       end
 
-      if camper.occupation[:school_location_type] == 'other'
-        form_camper.other_school_location = camper.occupation[:school_location]
+      if camper.occupation['school_location_type'] == 'other'
+        form_camper.other_school_location = camper.occupation['school_location']
       else
-        form_camper.school_location = camper.occupation[:school_location]
+        form_camper.school_location = camper.occupation['school_location']
       end
     else
     end
-    form_camper.occupation = camper.occupation[:type]
+    form_camper.occupation = camper.occupation['type']
     form_camper
   end
 

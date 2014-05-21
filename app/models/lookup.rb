@@ -38,7 +38,7 @@ class Lookup
    ARRIVAL_TIMES = [
      { name: "morning" },
      { name: "afternoon" },
-     { name: "evenining" }
+     { name: "evening" }
    ]
 
    CHURCHES = [

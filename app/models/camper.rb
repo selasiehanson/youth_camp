@@ -9,11 +9,13 @@ class Camper
 
   field :arrival_day, type: String
   field :arrival_time, type: String
-  field :date_of_birth, type: String
+  field :date_of_birth, type: Date
 
   field :email, type: String
+  field :confirm_email, type: String
   field :nationality, type: String
   field :phone_number, type: String
+  field :confirm_phone_number, type: String
 
   field :residence, type: String
   field :role, type: String

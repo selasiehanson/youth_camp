@@ -1,0 +1,156 @@
+ <div id="errorBox" class="error-box alert alert-danger">
+    <span id="message"></span>
+  </div>
+  <%# render "shared/errors" %>
+    <%# flash.each do |name, msg| -%>
+    <%# content_tag :div, msg, class: "error-box alert alert-#{name}" %>
+  <%# end -%>
+   
+  <%= form_for :camper_form_object, url: {action: @action},  html: {id: "register_form", method: @method} do |f| %>
+      <div class='form-group col-md-3 col-sm-3'>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+      
+      <div class='form-group col-md-3 col-sm-3'>
+        <%= f.label :confirm_email_address %>
+        <%= f.text_field :confirm_email, class: 'form-control' %>        
+      </div>
+
+      <div class='form-group col-md-3 col-sm-3'>
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number, class: 'form-control' %>
+      </div>
+
+      <div class='form-group col-md-3 col-sm-3'>
+        <%= f.label :confirm_phone_number %>
+        <%= f.text_field :confirm_phone_number, class: 'form-control' %>        
+      </div>
+      
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :other_names %>
+        <%= f.text_field :other_names, class: 'form-control' %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :gender %> <br>
+        <label class="radio-inline">
+          <%= f.radio_button :gender, "male" %>
+          <%= f.label :gender_male, "Male" %>
+        </label>
+        <label class="radio-inline">
+          <%= f.radio_button :gender, "female" %>
+          <%= f.label :gender_female, "Female" %>
+        </label>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4" id='date_of_birth_container'>
+        <% start_year = 1950; end_year = Time.now.year - 10 ; %>
+        <%= f.label :date_of_birth %>
+        <br>
+        <%= f.date_select :date_of_birth, start_year: start_year, end_year: end_year, with_css_classes: true %>
+      </div>
+
+      <div class='form-group col-md-4 col-sm-4'>
+        <%= f.label :area_of_residence %>
+        <%= f.text_field :residence, class: 'form-control' %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :church %>
+        <%= f.select :church, @churches, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class='form-group col-md-4 col-sm-4' id='otherChurch' class='hide'>
+        <%= f.label :your_church %>
+        <%= f.text_field :other_church, class: 'form-control' %>
+      </div>
+
+      <div class='form-group col-md-4 col-sm-4'>
+
+        <%= f.label :nationality %>
+        <%= f.select :nationality, @countries, {selected: @selected_country}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :role_at_camp %>
+        <%= f.select :role, @roles, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :occupation %> <br>
+        <label class="radio-inline">
+          <%= f.radio_button :occupation, "student" %>
+          <%= f.label :occupation_student, "Student" %>
+        </label>
+        <label class="radio-inline">
+          <%= f.radio_button :occupation, "worker" %>
+          <%= f.label :occupation_worker, "Worker" %>
+        </label>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4 student_details">
+        <%= f.label :school %>
+        <%= f.select :school, @schools, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :your_school %>
+        <%= f.text_field :other_school, class: 'form-control' %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4 student_details">
+        <%= f.label :location_of_school %>
+        <%= f.select :school_location, @locations, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4 ">
+        <%= f.label :other_location_of_school %>
+        <%= f.text_field :other_school_location, class: 'form-control' %>        
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4 student_details">
+        <%= f.label :educational_level %>
+        <%= f.select :educational_level, @educational_levels, {}, {class: 'form-control'} %>
+      </div>
+
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :day_of_arrival %>
+        <%= f.select :arrival_day, @arrival_days, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class="form-group col-md-4 col-sm-4">
+        <%= f.label :time_of_arrival %>
+        <%= f.select :arrival_time, @arrival_times, {}, {class: 'form-control'} %>
+      </div>
+
+      <div class='form-group col-md-4 col-sm-4'>
+        <%= f.label :emergency_contact_person %>
+        <%= f.text_field :emergency_contact, class: "form-control" %>
+      </div>
+
+      <div class='form-group col-md-4 col-sm-4'>
+        <%= f.label :emergency_contact_number %>
+        <%= f.text_field :emergency_number, class: "form-control" %>
+      </div>
+
+      <div class="col-md-12 col-sm-12">
+        <div class='form-group col-md-1 col-sm-1'>
+          <%= f.submit "Submit", class: 'btn btn-success', id: 'register_button' %>
+        </div>
+        <div class='form-group col-md-1 col-sm-1'>
+          <a href="<%= camper_path %>" class='btn btn-default' id='cancel_button'>Cancel </a>
+        </div>  
+      </div>
+      
+  <% end %>
+

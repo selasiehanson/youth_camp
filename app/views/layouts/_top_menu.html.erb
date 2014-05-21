@@ -21,14 +21,16 @@
         </ul>
         <ul class="buttons">
           <li class="top-buttons"> 
-            <%= link_to 'REGISTER', registration_new_path,  :class => 'btn btn-success' %>
-          <!-- <a class="btn btn-success" > Register</button>  -->
-        </li> 
+            <%= link_to 'MY DETAILS', camper_path,  :class => 'btn btn-info' %>
+          </li> 
         <% if signed_in? %>
           <li class="top-buttons">               
               <%= link_to 'LOGOUT', signout_path,  method: "delete", :class => 'btn btn-danger' %>
            </li>
         <% else %>
+          <li class="top-buttons"> 
+            <%= link_to 'REGISTER', registration_new_path,  :class => 'btn btn-success' %>
+          </li>
           <li class="top-buttons">  
               <%= link_to 'LOGIN', login_path,  :class => 'btn btn-primary' %>
            </li>

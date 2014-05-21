@@ -5,40 +5,69 @@ class RegistrationController < ApplicationController
   end
 
   def show   
-  end
-
-   def new    
-    setup_view
-    if @form_object.nil?
-      @camper = @form_object
-    else
-      @camper = CamperFormObject.new({email: "", phone_number: ""})
+    unless signed_in?
+      redirect_to root_url  
     end
   end
 
+  def new        
+    unless @form_object.nil?
+      @camper_form_object = @form_object
+    else
+      @camper_form_object = CamperFormObject.new({email: "", phone_number: ""})
+    end
+    @action = 'create' 
+    @method = :post
+    setup_view
+  end
 
   def create
     @form_object = CamperFormObject.new(camper_params.to_h)
-    camper = CamperFormObject.to_camper(@form_object)
-    status = camper_exists(camper)
+    @camper = CamperFormObject.to_camper(@form_object)
+    status = camper_exists(@camper)
     if status[0] == true
       flash[:danger] = status[1]
       # setup_view
       # @camper = CamperFormObject.from_camper(camper)
       render action: 'new'
     end
-    if camper.save
-      sign_in camper
+    if @camper.save
+      sign_in @camper
       redirect_to camper_url
     else
       setup_view
-      @errors = camper.errors
+      @errors = @camper.errors
       render 'new'
     end
   end
 
- 
-  def setup_view
+  def edit    
+    camper = Camper.find(params[:id])
+    @camper_form_object = CamperFormObject.from_camper(camper)
+    @action = 'update' 
+    @method = :put
+    setup_view    
+  end
+
+  def update
+    @form_object = CamperFormObject.new(camper_params.to_h)
+    @camper = CamperFormObject.to_camper(@form_object)
+    status = camper_exists(@camper)
+    
+    old_camper = Camper.find(current_user.id)
+    attributes = @camper.attributes.with_indifferent_access.deep_symbolize_keys    
+    attributes.delete(:_id)
+      
+    if old_camper.update_attributes(attributes)
+      redirect_to camper_url and return
+    else
+      setup_view
+      @errors = @camper.errors
+      render 'edit'
+    end
+  end
+
+  def setup_view   
     @countries = Country::LIST.collect {|p| [ p[:printable_name], p[:name] ] }
     @schools = School::LIST.collect {|p| [ p[:name], p[:name] ] }
     @locations = Lookup::SCHOOL_LOCATIONS.collect {|p| [ p[:name], p[:name] ] }
@@ -47,17 +76,13 @@ class RegistrationController < ApplicationController
     @arrival_days = Lookup::ARRIVAL_DAYS.collect {|p| [ p[:name], p[:name] ] }
     @arrival_times = Lookup::ARRIVAL_TIMES.collect {|p| [ p[:name], p[:name] ] }
     @churches = Lookup::CHURCHES.collect {|p| [ p[:name], p[:name] ] }
+    if @camper  
+      @selected_country = @camper.nationality
+    else
+      @selected_country = 'GHANA'
+    end
   end
 
-  def edit
-
-  end
-
-  def show
-  end
-
-  def update
-  end
 
   def camper_exists(camper)
     email = camper.email
@@ -81,12 +106,17 @@ class RegistrationController < ApplicationController
   end
 
   def camper_params
-    params.require(:camper).permit(:first_name,  :last_name,  :other_names,
+    params.require(:camper_form_object).permit(:first_name,  :last_name,  :other_names,
     :gender, :date_of_birth,  :email,  :nationality,
     :arrival_day,  :arrival_time,
     :phone_number,  :residence,  :role,
     :emergency_contact, :emergency_number,
     :church, :other_church,
-    :occupation, :school,  :school_location, :educational_level, :other_school)
+    :occupation, :school,  :school_location, :educational_level, :other_school,
+    :other_school_location,:confirm_email, :confirm_phone_number)
+  end
+
+  def print
+    render layout: 'print' 
   end
 end
