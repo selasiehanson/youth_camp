@@ -1,4 +1,5 @@
 class RegistrationController < ApplicationController
+  before_filter :check_camper_exists, only: [:create]
 
   def index
 
@@ -21,22 +22,27 @@ class RegistrationController < ApplicationController
     setup_view
   end
 
-  def create
+  def check_camper_exists
     @form_object = CamperFormObject.new(camper_params.to_h)
-    @camper = CamperFormObject.to_camper(@form_object)
-    status = camper_exists(@camper)
+    @new_camper = CamperFormObject.to_camper(@form_object)
+    status = camper_exists(@new_camper)
     if status[0] == true
-      flash[:danger] = status[1]
+      p status
+      flash.now[:danger] = status[1]
       setup_view
-      # @camper = CamperFormObject.from_camper(camper)
-      render action: 'new'
+      @camper_form_object = @form_object      
+      render 'new'      
     end
-    if @camper.save
-      sign_in @camper
-      redirect_to camper_url
+  end
+
+  def create
+    if @new_camper.save
+      sign_in @new_camper
+      flash[:success] = "Registration successful. Please remember to log out when done"
+      redirect_to camper_url and return
     else
       setup_view
-      @errors = @camper.errors
+      @errors = @new_camper.errors
       render 'new'
     end
   end
@@ -59,6 +65,7 @@ class RegistrationController < ApplicationController
     attributes.delete(:_id)
       
     if old_camper.update_attributes(attributes)
+      flash[:success] = "Registration details updated. Please remember to log out when done"
       redirect_to camper_url and return
     else
       setup_view

@@ -5,7 +5,6 @@
         var currentSchoolLocation;
 
         var studentDetails = $(".student_details");
-        var errorBox = $("#error_box");
         var otherChurch = $("#camper_form_object_other_church");
         var otherSchoolLocation = $("#camper_form_object_other_school_location");
         var otherSchool = $("#camper_form_object_other_school");
@@ -25,7 +24,8 @@
           PHONE_NUMBER: "Phone Numbers are not the same",
         }
 
-        errorBox.hide();
+        //hide client side error box
+        $("#errorBox").hide()
 
         for(var i =0; i < ids.length; i++){
             var id = "#" + ids[i];
@@ -142,12 +142,7 @@
                     return true;
                 }
             }
-
-            function clear() {
-                //hide the error box and clear all control groups
-                errorBox.hide();
-                $(".").removeClass("error");
-            }
+            
 
             if($.trim(email.val()) === ""){
               showError(ERR_MESSAGES.EMAIL_BLANK)

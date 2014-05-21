@@ -1,4 +1,8 @@
 <div class="container my-content">
+  <br />
+   <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+    <% end %>
   <h3 class="clearfix">Your Details
   
   <a href="<%= print_path %>" class='pull-right btn btn-default btn-sm'>

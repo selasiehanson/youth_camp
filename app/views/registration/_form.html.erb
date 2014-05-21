@@ -2,9 +2,9 @@
     <span id="message"></span>
   </div>
   <%# render "shared/errors" %>
-    <%# flash.each do |name, msg| -%>
-    <%# content_tag :div, msg, class: "error-box alert alert-#{name}" %>
-  <%# end -%>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "error-box alert alert-#{name}" %>
+    <% end %>
    
   <%= form_for :camper_form_object, url: {action: @action},  html: {id: "register_form", method: @method} do |f| %>
       <div class='form-group col-md-3 col-sm-3'>
