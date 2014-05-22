@@ -23,7 +23,7 @@ class RegistrationController < ApplicationController
   end
 
   def check_camper_exists
-    @form_object = CamperFormObject.new(camper_params.to_h)
+    @form_object = CamperFormObject.new(camper_params.to_hash)
     @new_camper = CamperFormObject.to_camper(@form_object)
     status = camper_exists(@new_camper)
     if status[0] == true
