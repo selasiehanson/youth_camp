@@ -47,6 +47,39 @@ h1,h2, h3, h4, h5 {
     // background-color: white;
 }
 
+
+.sidebar {
+    @media (min-width: 768px) {
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #F5F5F5;
+        border-right: 1px solid #DEDEDE;    
+    }
+
+    .nav-sidebar {
+        margin-right: -21px;
+        margin-bottom: 20px;
+        margin-left: -20px;
+
+         .active > a {
+            color: #FFF;
+            background-color: #428BCA;
+        }
+         li > a {
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+    }
+    
+}
+
 .buttons {
     list-style: none;
     li {

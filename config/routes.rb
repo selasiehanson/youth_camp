@@ -16,9 +16,14 @@ YouthCamp::Application.routes.draw do
   post "register" => "registration#create"
   put 'update_details' => "registration#update"
   get 'print' => 'registration#print'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/signout', to: 'sessions#destroy',  via: 'delete'
   resources :sessions, only: [:create]
   resources :registration
+
+  get 'admin' => 'admin/admin#index'
+  namespace :admin do
+        
+  end
 
   #  The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
