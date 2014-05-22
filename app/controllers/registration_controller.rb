@@ -55,7 +55,7 @@ class RegistrationController < ApplicationController
   end
 
   def update
-    @form_object = CamperFormObject.new(camper_params.to_h)
+    @form_object = CamperFormObject.new(camper_params.to_hash)
     @camper = CamperFormObject.to_camper(@form_object)
     status = camper_exists(@camper)
     
