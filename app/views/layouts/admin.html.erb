@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
   <title>YouthCamp</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application"%>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-app="app" class='admin-app'>
 
-  <%= render 'layouts/top_menu' %> 
-  <%= render 'layouts/side_bar' %> 
-  <div>
-    <ui-view></ui-view>
+  <%= render 'layouts/top_menu_admin' %>
+  <div class="container-fluid">
+    <div class="row">
+      <%= render 'layouts/side_bar' %> 
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 admin-main">
+  
+        <ui-view></ui-view>    
+    </div>
+  </div> 
+  
   </div>
 </body>
 </html>

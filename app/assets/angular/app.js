@@ -1,6 +1,11 @@
 'use strict';
 
-angular.module('app', [
+angular.module("app.controllers",[]);
+angular.module("app.services",[]);
+
+var app  = angular.module('app', [
+  "app.controllers",
+  "app.services",
   "ui.router",
   "ngResource",
 ]);
@@ -14,11 +19,15 @@ app.config(['$urlRouterProvider', '$stateProvider',
         templateUrl: "/dashboard",
         controller: 'DashBoardController'
       })
-      .state('roles_and_permissions', {
-        url: '/admin/roles_and_permissions',
-        templateUrl: '/app?app=admin&url=roles_and_permissions',
-        controller: 'PermissionsController'
+      .state('campers', {
+        url: '/campers',
+        templateUrl: '/admin/campers',
+        controller: 'CampersController'
       });
     $urlRouterProvider.otherwise("dashboard");
   }
 ]);
+
+app.config(["$httpProvider", function (provider) {
+  provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+}]);

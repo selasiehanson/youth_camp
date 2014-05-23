@@ -1,0 +1,36 @@
+<h2 class="page-header">Campers </h2>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+    <h3 class="panel-title">List of Campers</h3>
+  </div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="ax-grid-action-1">#</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Date Of Birth</th>
+        <th>Email</th>
+        <th>Phone number</th>
+        <th>Church</th>
+        <th>Arrival Day</th>
+        <th>Arrival time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="camper in campers">
+        <td> {{ $index + 1}}.</td>
+        <td> {{ camper.last_name }} {{ camper.first_name}} {{ camper.other_names}} </td>
+        <td> {{ camper.gender }} </td>
+        <td> {{ camper.date_of_birth }} </td>
+        <td> {{ camper.email }} </td>
+        <td> {{ camper.phone_number }} </td>
+        <td> {{ camper.church.name}}</td>
+        <td> {{ camper.arrival_day}}</td>
+        <td> {{ camper.arrival_time}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

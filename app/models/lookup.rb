@@ -24,7 +24,8 @@ class Lookup
      { name: "committee" },
      { name: "prayer warrior" },
      { name: "protocol" },
-     { name: "participant" }
+     { name: "technical team" },
+     { name: "worship team" }
    ]
 
    ARRIVAL_DAYS = [

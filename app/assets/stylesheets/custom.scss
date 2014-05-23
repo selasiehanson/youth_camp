@@ -280,3 +280,39 @@ $committe_border: #dedede;
 .carousel-control .icon-next, .carousel-control .glyphicon-chevron-left {
     left: 10%;
 }
+
+
+.admin-app {
+    background: white;
+}
+.admin-main{
+    padding: 20px;
+    @media (min-width: 768px) {
+  
+      padding-right: 40px;
+        padding-left: 40px;
+    }
+
+    .page-header {
+        padding-bottom: 9px;
+        margin: 40px 0 20px;
+        border-bottom: 1px solid #EEE;
+        margin-top: 0;
+    }
+
+    .ax-grid-action-1{
+        width: 16px;
+    }
+
+    .ax-grid-action-2{
+        width: 32px;
+    }
+
+    .ax-grid-action-3{
+        width: 48px;
+    }
+
+    .ax-grid-action-4{
+        width: 64px;
+    }
+}

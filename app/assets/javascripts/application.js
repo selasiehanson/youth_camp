@@ -13,4 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+
+//= require libs/angular.js
+//= require libs/angular-ui-router.js
+//= require libs/angular-resource.js
+//= require ./libs/bootstrap-datepicker.js
+//= require ./libs/select2.js
+//= require_tree ../angular
 //= require_tree .

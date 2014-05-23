@@ -22,7 +22,11 @@ YouthCamp::Application.routes.draw do
 
   get 'admin' => 'admin/admin#index'
   namespace :admin do
-        
+    resources :campers, except: [:create, :update, :destroy]
+  end
+
+  namespace :api do
+    resources :campers
   end
 
   #  The priority is based upon order of creation: first created -> highest priority.
