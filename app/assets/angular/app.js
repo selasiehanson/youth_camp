@@ -23,8 +23,14 @@ app.config(['$urlRouterProvider', '$stateProvider',
         url: '/campers',
         templateUrl: '/admin/campers',
         controller: 'CampersController'
+      }).state('campers.show', {
+        url: '/:id',
+        templateUrl: function(stateParams){
+          return '/admin/campers/' + stateParams.id;
+        },
+        controller: 'CampersShowController'
       });
-    $urlRouterProvider.otherwise("dashboard");
+    // $urlRouterProvider.otherwise("dashboard");
   }
 ]);
 

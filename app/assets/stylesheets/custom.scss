@@ -315,4 +315,10 @@ $committe_border: #dedede;
     .ax-grid-action-4{
         width: 64px;
     }
+
+    .table-show{
+        tr > td {
+            border: none
+        }
+    }
 }
