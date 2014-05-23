@@ -21,11 +21,10 @@ class Lookup
 
   ROLES = [
      { name: "camper" },
-     { name: "committee" },
-     { name: "prayer warrior" },
-     { name: "protocol" },
-     { name: "participant" }
-   ]
+     { name: "prayer team " },
+     { name: "worship/tech team" },
+     { name: "committee " },
+  ]
 
    ARRIVAL_DAYS = [
      { name: "wednesday" },
