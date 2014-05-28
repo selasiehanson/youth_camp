@@ -25,8 +25,9 @@ class Lookup
      { name: "prayer warrior" },
      { name: "protocol" },
      { name: "technical team" },
-     { name: "worship team" }
-   ]
+     { name: "worship team" },
+     { name: "prayer team " }     
+  ]
 
    ARRIVAL_DAYS = [
      { name: "wednesday" },
