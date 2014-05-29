@@ -30,7 +30,7 @@ app.config(['$urlRouterProvider', '$stateProvider',
         },
         controller: 'CampersShowController'
       });
-    // $urlRouterProvider.otherwise("dashboard");
+    $urlRouterProvider.otherwise("campers");
   }
 ]);
 
