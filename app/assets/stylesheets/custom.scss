@@ -48,6 +48,13 @@ h1,h2, h3, h4, h5 {
 }
 
 
+.fetching{
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 5px;
+    color: black;
+}
+
 .sidebar {
     @media (min-width: 768px) {
         position: fixed;

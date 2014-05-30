@@ -6,8 +6,17 @@ coming up....
     <ui-view></ui-view>
   </div>
   <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">List of Campers</h3>
+    <div class="panel-heading clearfix">
+      <h3 class="panel-title">
+        List of Campers
+
+        <a href="" class="pull-right btn btn-default btn-sm" ng-click="fetchData()"> 
+
+          <i class="glyphicon glyphicon-refresh"></i>Refresh 
+        </a>
+        <span class="pull-right fetching" ng-show="isFetching">fecthing....</span>
+      </h3>
+
     </div>
     <table class="table table-bordered table-striped">
       <thead>
