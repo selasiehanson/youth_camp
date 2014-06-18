@@ -20,7 +20,6 @@
         <li class="<%= is_active_page(@page, 'contact') %>"> <%= link_to 'CONTACT', :contact %> </li>
       </ul>
       <ul class="buttons">
-        
         <% if  !Settings.registration_ended? %>
         <% if signed_in? %>
         <li class="top-buttons">
@@ -38,6 +37,10 @@
           <%= link_to 'LOGIN', login_path,  :class => 'btn btn-primary' %>
         </li>
         <% end %>
+        <% else %>
+        <li>
+          <span class='alert alert-danger'>REGISTRATION CLOSED</span>
+        </li>
         <%  end %>
         
       </ul>
