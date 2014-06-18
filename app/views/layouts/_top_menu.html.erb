@@ -3,16 +3,14 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="http://arcyf.com">ARCYF</a>
       <a class="navbar-brand" href="/">YOUTH CAMP 2014</a>
-
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav y-nav-links">
@@ -20,26 +18,29 @@
         <li class="<%= is_active_page(@page, 'media') %>"> <%= link_to 'MEDIA', :media %> </li>
         <li class="<%= is_active_page(@page, 'faq') %>"> <%= link_to "FAQ", :faq %> </li>
         <li class="<%= is_active_page(@page, 'contact') %>"> <%= link_to 'CONTACT', :contact %> </li>
-        </ul>
-        <ul class="buttons">
-          
+      </ul>
+      <ul class="buttons">
+        
+        <% if  !Settings.registration_ended? %>
         <% if signed_in? %>
-          <li class="top-buttons"> 
-            <%= link_to 'MY DETAILS', camper_path,  :class => 'btn btn-info' %>
-          </li> 
-          <li class="top-buttons">               
-              <%= link_to 'LOGOUT', signout_path,  method: "delete", :class => 'btn btn-danger' %>
-           </li>
+        <li class="top-buttons">
+          <%= link_to 'MY DETAILS', camper_path,  :class => 'btn btn-info' %>
+        </li>
+        <li class="top-buttons">
+          <%= link_to 'LOGOUT', signout_path,  method: "delete", :class => 'btn btn-danger' %>
+        </li>
         <% else %>
-          <li class="top-buttons"> 
-            <%= link_to 'REGISTER', registration_new_path,  :class => 'btn btn-success' %>
-          </li>
-          <li class="top-buttons">  
-              <%= link_to 'LOGIN', login_path,  :class => 'btn btn-primary' %>
-           </li>
+        <li class="top-buttons">
+          
+          <%= link_to 'REGISTER', registration_new_path,  :class => 'btn btn-success' %>
+        </li>
+        <li class="top-buttons">
+          <%= link_to 'LOGIN', login_path,  :class => 'btn btn-primary' %>
+        </li>
         <% end %>
+        <%  end %>
         
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+      </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>

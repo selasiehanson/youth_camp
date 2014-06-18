@@ -1,6 +1,7 @@
 class RegistrationController < ApplicationController
   before_filter :check_camper_exists, only: [:create]
-
+  before_filter :check_registration_over, only: [:show, :new, :edit]
+  
   def index
 
   end
@@ -109,6 +110,10 @@ class RegistrationController < ApplicationController
       status=[true, message]
     end
     status
+  end
+
+  def check_registration_over
+    redirect_to root_url if Settings.registration_ended?
   end
 
   def camper_params
