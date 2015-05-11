@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
   def index
-    @images = %w(1501 1502 1503)
+    @images = %w(1501 1502 1503 1504)
     @page = 'index'    
   end
 
