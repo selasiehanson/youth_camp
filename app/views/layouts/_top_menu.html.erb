@@ -18,6 +18,7 @@
         <li class="<%= is_active_page(@page, 'media') %>"> <%= link_to 'MEDIA', :media %> </li>
         <li class="<%= is_active_page(@page, 'faq') %>"> <%= link_to "FAQ", :faq %> </li>
         <li class="<%= is_active_page(@page, 'contact') %>"> <%= link_to 'CONTACT', :contact %> </li>
+          <li class="<%= is_active_page(@page, 'donate') %>"> <%= link_to 'DONATE', :donate %> </li>
       </ul>
       <ul class="buttons">
         <% if  !Settings.registration_ended? %>
@@ -26,7 +27,7 @@
           <%= link_to 'MY DETAILS', camper_path,  :class => 'btn btn-info' %>
         </li>
         <li class="top-buttons">
-          <%= link_to 'LOGOUT', signout_path,  method: "delete", :class => 'btn btn-danger' %>
+            <%= link_to 'LOGOUT', signout_path, method: 'delete', :class => 'btn btn-danger' %>
         </li>
         <% else %>
         <li class="top-buttons">
