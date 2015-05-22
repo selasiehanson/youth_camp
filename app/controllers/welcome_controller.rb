@@ -17,6 +17,9 @@ class WelcomeController < ApplicationController
     @page = 'contact'
   end
 
+  def donate
+    @page='donate'
+  end
   def media
     @page = 'media'
   end
