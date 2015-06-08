@@ -11,6 +11,7 @@ YouthCamp::Application.routes.draw do
   get 'faq' => 'welcome#faq'
   get 'contact' => 'welcome#contact'
   get 'media' => 'welcome#media'
+  get 'donate' => 'welcome#donate'
   post "sign_up" => 'registration#sign_up'
   get 'login' => 'sessions#new'
   post "register" => "registration#create"
