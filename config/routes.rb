@@ -27,7 +27,12 @@ YouthCamp::Application.routes.draw do
   end
 
   namespace :api do
-    resources :campers
+    resources :campers do 
+      collection do 
+       post 'export'
+       get 'download/:file_name' => 'campers#download_csv'
+      end
+    end
   end
 
   #  The priority is based upon order of creation: first created -> highest priority.
