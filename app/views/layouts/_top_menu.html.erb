@@ -9,16 +9,16 @@
       <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="http://arcyf.com">ARCYF</a>
-      <a class="navbar-brand" href="/">YOUTH CAMP 2015</a>
+      <a class="navbar-brand" href="/">YOUTH CAMP 2016</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav y-nav-links">
         <li class="<%= is_active_page(@page, 'about') %>"> <%= link_to "ABOUT", :about %> </li>
-        <li class="<%= is_active_page(@page, 'media') %>"> <%= link_to 'MEDIA', :media %> </li>
+        <!--<li class="<%= is_active_page(@page, 'media') %>"> <%= link_to 'MEDIA', :media %> </li>-->
         <li class="<%= is_active_page(@page, 'faq') %>"> <%= link_to "FAQ", :faq %> </li>
         <li class="<%= is_active_page(@page, 'contact') %>"> <%= link_to 'CONTACT', :contact %> </li>
-          <li class="<%= is_active_page(@page, 'donate') %>"> <%= link_to 'DONATE', :donate %> </li>
+          <!--<li class="<%= is_active_page(@page, 'donate') %>"> <%= link_to 'DONATE', :donate %> </li>-->
       </ul>
       <ul class="buttons">
         <% if  !Settings.registration_ended? %>
