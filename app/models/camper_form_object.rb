@@ -76,8 +76,14 @@ class CamperFormObject
     camper.emergency_contact = form_object.emergency_contact
     camper.emergency_number = form_object.emergency_number
     camper.date_of_birth = form_object.date_of_birth
-
-    if form_object.church.downcase == 'other'
+        
+    if form_object.service_group.downcase == 'other'
+      camper.service_group = { 
+        type:'other',
+        name:form_object.other_service_group
+       }
+    
+   if form_object.church.downcase == 'other'
       camper.church ={
           type: 'other',
           name: form_object.other_church
@@ -111,7 +117,8 @@ class CamperFormObject
         camper.occupation[:school_location] = form_object.school_location
       end
     else
-      camper.occupation = {type: 'worker'}
+      camper.occupation[:type]='worker'
+      camper.occupation[:profession] = form_object.profession
     end
     camper
   end
@@ -144,6 +151,9 @@ class CamperFormObject
       form_camper.other_church = camper.church['name']
     end
 
+    
+    if camper.occupation['type'].downcase == 'worker'
+      form_camper.profession=camper.occupation['profession']
     if camper.occupation['type'].downcase == 'student'
 
       form_camper.educational_level = camper.occupation['educational_level']
