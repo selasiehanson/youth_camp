@@ -25,6 +25,19 @@ class Lookup
      { "name": "prayer team " },
      { "name": "worship/tech team" },
   ]
+  
+  
+  PROFESSIONS = [
+     { "name": "software engineer" },
+     { "name": "lawyer" },  
+     { "name": "doctor" },
+     { "name": "dentist" },
+     { "name": "accountant" },
+     { "name": "financial analyst" },
+     { "name": "investment banker" },
+     { "name": "brand specialist" },
+     {"name":"other"}
+  ]
 
    ARRIVAL_DAYS = [
      { "name":"monday" },
@@ -40,6 +53,16 @@ class Lookup
      { "name": "morning" },
      { "name": "afternoon" },
      { "name": "evening" }
+   ]
+
+   SERVICE_GROUPS = [
+     { "name": "Decor" },
+     { "name": "Music" },
+     { "name": "Drama" },
+     { "name": "Logistics" },
+     { "name": "Treasury" },
+     { "name": "Ushers" },
+     { "name": "other" }
    ]
 
    CHURCHES = [
