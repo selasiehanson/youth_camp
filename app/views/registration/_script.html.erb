@@ -6,6 +6,7 @@
         var currentProfession;
 
         var studentDetails = $(".student_details");
+        var workerProfession=$("#camper_form_object_profession")
         var otherProfession=$("#camper_form_object_other_profession")
         var otherChurch = $("#camper_form_object_other_church");
         var otherSchoolLocation = $("#camper_form_object_other_school_location");
@@ -115,6 +116,8 @@
 
             if (studentVal == "student") {
                 studentDetails.show();
+                workerProfession.hide()
+                
             }
         }
 
