@@ -112,11 +112,12 @@
             studentVal = $.trim(studentVal).toLocaleLowerCase();
             if (studentVal == "worker") {
                 studentDetails.hide();
+                workerProfession.parent().show();
             }
 
             if (studentVal == "student") {
                 studentDetails.show();
-                workerProfession.parent().hide()
+                workerProfession.parent().hide();
                 
             }
         }
