@@ -28,15 +28,19 @@ class Lookup
   
   
   PROFESSIONS = [
-     { "name": "software engineer" },
-     { "name": "lawyer" },  
-     { "name": "doctor" },
-     { "name": "dentist" },
-     { "name": "accountant" },
-     { "name": "financial analyst" },
-     { "name": "investment banker" },
-     { "name": "brand specialist" },
-     {"name":"other"}
+     { "name": "Agribusiness- farming,poultry and animal rearing" },
+     { "name": "Academia" }, 
+     { "name": "Accounting Finance Banking and Economics" },
+     { "name": "Building and Construction" },  
+     { "name": "Engineering-Telecom,Civil,etc" },
+     { "name": "Enterpreneurs/Artisans" },
+     { "name": "Medical- general medicine,dentistry,nursing etc" },
+     { "name": "Multi Media Advertising" },
+     { "name": "Professional Sports" },
+     { "name": "Social Work" },
+     { "name": "Full time Ministry" },
+     { "name": "Law" },
+     {"name":"Other"}
   ]
 
    ARRIVAL_DAYS = [
