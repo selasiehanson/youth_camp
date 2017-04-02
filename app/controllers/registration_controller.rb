@@ -124,7 +124,7 @@ class RegistrationController < ApplicationController
     :phone_number,  :residence,  :role,
     :emergency_contact, :emergency_number,
     :church, :other_church,
-    :occupation,:profession,:other_profession :school,  :school_location, :educational_level, :other_school,
+    :occupation,:profession,:other_profession, :school,  :school_location, :educational_level, :other_school,
     :other_school_location,:confirm_email, :confirm_phone_number)
   end
 
