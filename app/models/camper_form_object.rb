@@ -119,7 +119,8 @@ class CamperFormObject
       else
         camper.occupation[:profession_type]='default'
       end
-   end
+    end
+  end
   
 
   def self.from_camper(camper)
@@ -170,5 +171,6 @@ class CamperFormObject
         form_camper.school_location = camper.occupation['school_location']
       end
     end
+   end
   end
 end
