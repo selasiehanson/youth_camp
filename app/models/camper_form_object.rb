@@ -120,6 +120,7 @@ class CamperFormObject
         camper.occupation[:profession_type]='default'
       end
     end
+    camper
   end
   
 
