@@ -6,7 +6,7 @@ class CamperFormObject
                 :phone_number, :confirm_phone_number, :residence, :role,
                 :emergency_contact, :emergency_number,
                 :church, :other_church,
-                :occupation,:profession, :school, :school_location, :educational_level,
+                :occupation,:profession,:other_profession, :school, :school_location, :educational_level,
                 :other_school, :other_school_location
 
   TAKE_OUT = %w(date_of_birth(1i) date_of_birth(2i) date_of_birth(3i))
