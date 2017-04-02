@@ -77,12 +77,7 @@ class CamperFormObject
     camper.emergency_number = form_object.emergency_number
     camper.date_of_birth = form_object.date_of_birth
         
-    if form_object.service_group.downcase == 'other'
-      camper.service_group = { 
-        type:'other',
-        name:form_object.other_service_group
-       }
-    
+      
    if form_object.church.downcase == 'other'
       camper.church ={
           type: 'other',
@@ -117,12 +112,15 @@ class CamperFormObject
         camper.occupation[:school_location] = form_object.school_location
       end
     else
-      camper.occupation[:type]='worker'
-      camper.occupation[:profession] = form_object.profession
-    end
-    camper
-  end
-
+      camper.occupation= {type:'worker',profession:form_object.profession}
+      if form_object.profession.blank?
+       camper.occupation[:profession] = form_object.other_profession
+       camper.occupation[:profession_type]='other'
+      else
+        camper.occupation[:profession_type]='default'
+      end
+   end
+  
 
   def self.from_camper(camper)
     form_camper = CamperFormObject.new(nil, nil)
@@ -153,26 +151,23 @@ class CamperFormObject
 
     
     if camper.occupation['type'].downcase == 'worker'
-      form_camper.profession=camper.occupation['profession']
-    if camper.occupation['type'].downcase == 'student'
-
+      if camper.occupation['profession_type'].downcase='other'
+       form_camper.other_profession=camper.occupation['profession']
+      else
+       form_camper.profession=camper.occupation['profession']
+      end
+    else
+     if camper.occupation['type'].downcase == 'student'
       form_camper.educational_level = camper.occupation['educational_level']
-
       if camper.occupation['school_type'].downcase == 'other'
         form_camper.other_school = camper.occupation['school']
       else
         form_camper.school = camper.occupation['school']
       end
-
       if camper.occupation['school_location_type'].downcase == 'other'
         form_camper.other_school_location = camper.occupation['school_location']
       else
         form_camper.school_location = camper.occupation['school_location']
       end
-    else
     end
-    form_camper.occupation = camper.occupation['type']
-    form_camper
-  end
-
-end
+ end
