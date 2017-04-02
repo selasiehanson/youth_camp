@@ -170,4 +170,5 @@ class CamperFormObject
         form_camper.school_location = camper.occupation['school_location']
       end
     end
- end
+  end
+end
