@@ -154,10 +154,12 @@ class CamperFormObject
         form_camper.school = camper.occupation['school']
       end
 
-      if camper.occupation['school_location_type'].downcase == 'other'
-        form_camper.other_school_location = camper.occupation['school_location']
-      else
-        form_camper.school_location = camper.occupation['school_location']
+      unless camper.occupation['school_location_type'].blank?
+        if camper.occupation['school_location_type'].downcase == 'other'
+         form_camper.other_school_location = camper.occupation['school_location']
+        else
+         form_camper.school_location = camper.occupation['school_location']
+        end
       end
     else
     end
