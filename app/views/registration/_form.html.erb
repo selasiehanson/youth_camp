@@ -64,11 +64,6 @@
         <%= f.text_field :residence, class: 'form-control' %>
       </div>
 
-      <div class="form-group col-md-4 col-sm-4">
-        <%= f.label :church %>
-        <%= f.select :church, @churches, {}, {class: 'form-control'} %>
-      </div>
-
       <div class='form-group col-md-4 col-sm-4' id='otherChurch' class='hide'>
         <%= f.label :your_church %>
         <%= f.text_field :other_church, class: 'form-control' %>
@@ -97,29 +92,15 @@
         </label>
       </div>
 
-      <div class="form-group col-md-4 col-sm-4 student_details">
-        <%= f.label :school %>
-        <%= f.select :school, @schools, {}, {class: 'form-control'} %>
-      </div>
 
       <div class="form-group col-md-4 col-sm-4">
         <%= f.label :your_school %>
-        <%= f.text_field :other_school, class: 'form-control' %>
-      </div>
-
-      <div class="form-group col-md-4 col-sm-4 student_details">
-        <%= f.label :location_of_school %>
-        <%= f.select :school_location, @locations, {}, {class: 'form-control'} %>
+        <%= f.text_field :school, class: 'form-control' %>
       </div>
 
       <div class="form-group col-md-4 col-sm-4 ">
-        <%= f.label :other_location_of_school %>
-        <%= f.text_field :other_school_location, class: 'form-control' %>        
-      </div>
-
-      <div class="form-group col-md-4 col-sm-4 student_details">
-        <%= f.label :educational_level %>
-        <%= f.select :educational_level, @educational_levels, {}, {class: 'form-control'} %>
+        <%= f.label :location_of_school %>
+        <%= f.text_field :school_location, class: 'form-control' %>        
       </div>
 
 
