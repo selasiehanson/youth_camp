@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require axios
 //= require vue
 //= require ./libs/bootstrap-datepicker.js
 //= require ./libs/select2.js

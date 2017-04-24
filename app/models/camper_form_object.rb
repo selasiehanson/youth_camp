@@ -105,7 +105,7 @@ class CamperFormObject
         camper.occupation[:school_type] = 'default'
       end
 
-      if form_object.school_location.downcas e=='other'
+      if form_object.school_location.downcase=='other'
         camper.occupation[:school_location_type]= 'other'
         camper.occupation[:school_location] = form_object.other_school_location
       else
