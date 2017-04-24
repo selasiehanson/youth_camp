@@ -97,7 +97,7 @@ class CamperFormObject
           school_location: form_object.school_location,
           educational_level: form_object.educational_level
       }
-      if form_object.school.downcase='other'
+      if form_object.school.downcase =='other'
         camper.occupation[:school] = form_object.other_school
         camper.occupation[:school_type] = 'other'
       else
@@ -105,16 +105,16 @@ class CamperFormObject
         camper.occupation[:school_type] = 'default'
       end
 
-      if form_object.school_location.downcase=='other'
+      if form_object.school_location.downcas e=='other'
         camper.occupation[:school_location_type]= 'other'
         camper.occupation[:school_location] = form_object.other_school_location
       else
-        camper.occupation[:school_location_type]= 'default'
+        camper.occupation[:school_location_type] = 'default'
         camper.occupation[:school_location] = form_object.school_location
       end
     else
       camper.occupation= {type:'worker',profession:form_object.profession}
-      if form_object.profession.downcase=='other'
+      if form_object.profession.downcase =='other'
        camper.occupation[:profession] = form_object.other_profession
        camper.occupation[:profession_type]='other'
       else
