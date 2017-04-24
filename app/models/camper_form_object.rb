@@ -154,7 +154,7 @@ class CamperFormObject
 
     
     if camper.occupation['type'].downcase == 'worker'
-      if camper.occupation['profession_type'].downcase='other'
+      if camper.occupation['profession_type'].downcase =='other'
        form_camper.other_profession=camper.occupation['profession']
       else
        form_camper.profession=camper.occupation['profession']
