@@ -42,8 +42,9 @@ group :development do
   gem 'guard-livereload'
 end
 
+#ruby version
+ruby "2.2.5"
 
-ruby "2.1.0"
 
 
 # Use ActiveModel has_secure_password
