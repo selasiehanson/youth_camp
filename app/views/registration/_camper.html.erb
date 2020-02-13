@@ -1,14 +1,14 @@
 
- 
+
   <% camper = current_user %>
   <table class='table table-bordered'>
     <tbody>
       <tr>
         <td>
           <b>Name:</b> <%= "#{camper.last_name} #{camper.first_name} #{camper.other_names}"%>  </td>
-          <td> 
+          <td>
             <b>Gender: </b> <%= camper.gender %> <b>|</b>
-            <b>Date of Birth: </b> <%= camper.date_of_birth %> 
+            <b>Date of Birth: </b> <%= camper.date_of_birth %>
           </td>
       </tr>
       <tr>
@@ -20,6 +20,8 @@
         <td> <b>Residence: </b> <%= camper.residence %> </td>
       </tr>
       <tr>
+        <td> <b>Allergy: </b> <%= camper.allergy %> </td>
+        <td> <b>Departure Day: </b> <%= camper.departure_day %> </td>
         <td> <b>Arrival Day: </b> <%= camper.arrival_day %> </td>
         <td> <b>Arrival Time: </b> <%= camper.arrival_time %> </td>
       </tr>
@@ -29,18 +31,18 @@
         <% else %>
           <td> <b>Church: </b> <%= camper.church['name'] %> </td>
         <% end %>
-        
+
         <td> <b>Occupation: </b> <%= camper.occupation['type'] %> </td>
       </tr>
       <% if camper.occupation['type'] == 'student' %>
       <tr>
-        <td> 
+        <td>
           <b>Educational Level: </b> <%= camper.occupation['educational_level'] %>
-        </td>        
-        <td> 
-          <b>School: </b> <%= camper.occupation['school'] %>  | 
-           <b>Location: </b> <%= camper.occupation['school_location'] %> 
-        </td>        
+        </td>
+        <td>
+          <b>School: </b> <%= camper.occupation['school'] %>  |
+           <b>Location: </b> <%= camper.occupation['school_location'] %>
+        </td>
       </tr>
       <% end %>
       <tr>
