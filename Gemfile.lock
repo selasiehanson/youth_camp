@@ -36,9 +36,12 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
+    autoprefixer-rails (9.7.4)
+      execjs
     axios_rails (0.14.0)
-    bootstrap-sass (3.0.2.1)
-      sass (~> 3.2)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     bson (3.2.7)
     bson_ext (1.5.1)
     builder (3.1.4)
@@ -137,6 +140,8 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
+    sassc (2.2.1)
+      ffi (~> 1.9)
     sdoc (1.0.0)
       rdoc (>= 5.0)
     shellany (0.0.1)
@@ -171,7 +176,7 @@ PLATFORMS
 
 DEPENDENCIES
   axios_rails
-  bootstrap-sass (~> 3.0.2.0)
+  bootstrap-sass (~> 3.4.1)
   bson_ext
   coffee-rails (~> 4.0.0)
   eventmachine (>= 1.0.4)
