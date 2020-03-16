@@ -1,14 +1,14 @@
 
- 
+
   <% camper = current_user %>
   <table class='table table-bordered'>
     <tbody>
       <tr>
         <td>
           <b>Name:</b> <%= "#{camper.last_name} #{camper.first_name} #{camper.other_names}"%>  </td>
-          <td> 
+          <td>
             <b>Gender: </b> <%= camper.gender %> <b>|</b>
-            <b>Date of Birth: </b> <%= camper.date_of_birth %> 
+            <b>Date of Birth: </b> <%= camper.date_of_birth %>
           </td>
       </tr>
       <tr>
@@ -29,23 +29,24 @@
         <% else %>
           <td> <b>Church: </b> <%= camper.church['name'] %> </td>
         <% end %>
-        
+
         <td> <b>Occupation: </b> <%= camper.occupation['type'] %> </td>
       </tr>
       <% if camper.occupation['type'] == 'student' %>
       <tr>
-        <td> 
+        <td>
           <b>Educational Level: </b> <%= camper.occupation['educational_level'] %>
-        </td>        
-        <td> 
-          <b>School: </b> <%= camper.occupation['school'] %>  | 
-           <b>Location: </b> <%= camper.occupation['school_location'] %> 
-        </td>        
+        </td>
+        <td>
+          <b>School: </b> <%= camper.occupation['school'] %>  |
+           <b>Location: </b> <%= camper.occupation['school_location'] %>
+        </td>
       </tr>
       <% end %>
       <tr>
         <td> <b>Emergency Contact: </b> <%= camper.emergency_contact %> </td>
         <td> <b>Contact Phone Number: </b> <%= camper.emergency_number %> </td>
+        <td> <b>Allergies : </b> <%= camper.allergies %> </td>
       </tr>
     </tbody>
   </table>

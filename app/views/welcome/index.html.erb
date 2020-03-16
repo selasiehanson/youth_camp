@@ -1,16 +1,16 @@
 <div class="row my-carousel-box">
   <div class="container">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-      
+
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <% @images.each_with_index do |image, idx| %>
           <% klass = idx==0 ? 'item active' : 'item' %>
           <div class="<%= "#{klass}" %>">
               <%= image_tag "web-banner-#{image}.jpg"  %>
-          </div>    
-        <% end %> 
-          <%# image_tag('/assets/web-banner-03.jpg') %>      
+          </div>
+        <% end %>
+          <%# image_tag('/assets/web-banner-03.jpg') %>
       </div>
 
       <!-- Controls -->
@@ -29,74 +29,84 @@
 <div class="row commitee-message">
   <div class="container">
     <div class="col-lg-12 col-md-12  lead">
-      <h3>Message from the comittee</h3>
-Life as we know it, has many ups and downs. There are many times when we feel like “throwing in the towel” and just being 
-complacent. Unfortunately, this also finds its way into our relationship with God. We tend to give up when things seem tough, 
-or when we feel incapable of following through with what we have been called to do as Christians, mostly because of the
-pressures of this world. 
-The theme for this year’s youth camp is “Mission Possible…Walking in His steps”. This theme encompasses our mandate as Christians 
-to be disciples and make disciples of many nations. (Matt 28v19). It draws attention to a common issue in our Christian 
-lives- being “in-step” with Christ. (Ephesians 5v1:2). The aim of this year’s youth camp is to broadcast the great news that 
-with God all things are possible!
-As Christians, our main goals in life is to be Christ like. Ideally, we are to constantly walk in His steps- Jesus’ steps. 
-We are to be true Disciples of Christ, learning His perfect ways and doing as he did! True, it may be difficult as He told His disciples or rather, it is difficult!! But you see… the beautiful thing about this journey is that…the Mission is Possible with Christ!
-Glory be to God, who has given us the Bible as a manual to life and the Holy Spirit as our guide, as well as grace to equip us on this 
-Mission! As we consciously make the great decision of knowing Christ and making Him known, we  need to have faith, hope and love. 
-With this, we know that the Mission is definitely possible!
-        
-    </div>    
-  </div>    
+
+      <h3>Message from the Committee</h3>
+      <strong>"LINKED!"</strong>
+      <p><i>Don’t look out only for your own interests, but take an interest in others, too (Phil 2:4)</i></p>
+      
+      <p>A simple yet profound word-theme that encapsulates our connection first to God through Christ, and to one another: and therefore, 
+      becomes the window through which we can view and learn the implications of this connectedness. </p>
+
+      <p>The goal is to become a better community of believers because of this.
+      We want Linked 2020 to bring focus on our shared journey as Christian brothers and sisters; 
+      we want it to focus on the  energizing power of the Holy Spirit, the active consequences of love at work, 
+      and how all these lead to perfect unity which in turn creates a fertile garden where we all grow and mature.
+      We want Linked 2020 to center conversations of our trials and triumphs in building edifying relationships. 
+      We want it to be about looking out for the interest of others and providing the support they need to grow 
+      We want it to be about generosity and everything that makes us competent community builders.
+      Our conviction is that anyone who comes to Linked 2020 will go away feeling deeply connected to Christ and to others!
+</p>
+      <b>THEME SCRIPTURE.</b>
+      <p>
+      Is there any encouragement from belonging to Christ? Any comfort from his love? 
+      Any fellowship together in the Spirit? Are your hearts tender and compassionate? 
+      Then make me truly happy by agreeing wholeheartedly with each other, loving one another, 
+      and working together with one mind and purpose. 
+      Don’t be selfish; don’t try to impress others. 
+      Be humble, thinking of others as better than yourselves. 
+      Don’t look out only for your own interests, but take an interest in others, too. 
+      <i>(Philippians 2:1-‬4 NLT)</i></p>
+
+    </div>
+  </div>
 </div>
 <div class="container">
-  
   <div class="row testimonies">
-    <div class="col-lg-12 col-md-12">
+    <div class="col-lg-12 col-md-12 ">
     <h3>Testimonies</h3>
-  </div>
+
   <div class="col-lg-6 col-md-6 testimony">
     <div class="message">
       <div class="pull-left image">
-        <%= image_tag('joana.jpg') %>
+        <%= image_tag('robert.jpg') %>
       </div>
-<p>      My perception of camp meetings in general was not the best due to past experiences from other camp settings. 
-I was invited by a friend and decided to attend the 2017 Accra Ridge Youth Fellowship Camp because I was on leave. 
-My perception about camp meetings changed from the first meeting. I had never seen a youth group that was so dedicated to prayer- 
-this got me excited and I knew from that night that this gathering would be great. 
+<p>      My perception of camp meetings in general was not the best due to past experiences from other camp settings.
+I was invited by a friend and decided to attend the 2017 Accra Ridge Youth Fellowship Camp because I was on leave.
+My perception about camp meetings changed from the first meeting. I had never seen a youth group that was so dedicated to prayer-
+this got me excited and I knew from that night that this gathering would be great.
 My prayer life was dying down and needed urgent resuscitation hence I had to find help, that's what drove me to the Camp.
-The theme, “Yet not I” brought me to the understanding of denying myself and dying daily. 
-The daily dawn prayers, fasting and bible studies gave some spice to my life and I have held on to this even till now. 
+The theme, “Yet not I” brought me to the understanding of denying myself and dying daily.
+The daily dawn prayers, fasting and bible studies gave some spice to my life and I have held on to this even till now.
 
 I'll entreat every Christian within the target group to make it a point to attend this year’s camp. You are in for a life changing
-experience.
+  experience.</p>
+ <div class="name">Robert Lomotey.</div>
+      </div>
+      </div>
 
-
-
-     <div class="name">Robert Lomotey.</div>
-    </div>
-    
-     <div class="col-lg-6 col-md-6 testimony">
+<div class="col-lg-6 col-md-6 testimony">
     <div class="message">
     <div class="pull-left image">
-        <%= image_tag('enam.jpg') %>
+        <%= image_tag('phoebe.jpg') %>
       </div>
-<p>     Last year's youth camp was an insightful and thought provoking camp which had a theme which everyone could relate on; 
+<p>     Last year's youth camp was an insightful and thought provoking camp which had a theme which everyone could relate on;
   “Yet Not I”. It was a reminder that through the ups and downs, highs and lows, it's by the grace of God who makes us who we are.
 On a personal note, camp was and has always been a time for reflection and pondering. Last year's youth camp was an avenue to figure
   out and seek out the next step after school and which other place than 5 days in isolation, sitting at the feet of the Lord seeking
-  His face. From dawn chain prayers to detailed teaching sessions to power packed all nights. At the end of those 5 days, decisions 
+  His face. From dawn chain prayers to detailed teaching sessions to power packed all nights. At the end of those 5 days, decisions
   concerning work, school, walk with Christ and relationships were clearer.
-Camp was a teaching moment to blend in each and every section of my life and not solely be fixated on one aspect. Life after camp 
+Camp was a teaching moment to blend in each and every section of my life and not solely be fixated on one aspect. Life after camp
   has not been rosy as we plan it to be during camp, cliché as it may seem it is the truth but that's where church and
   fellowshipping plays a vital role as it helps guide us onto the path we desire.
 So this year's youth camp, I entreat everyone to make it to camp. Remove that perception that after camp things will go back to
   its former self. Yes, it may seem so at first but that's when the Holy Spirit plays a significant role, the Holy Spirit convicts you.
   Unconsciously, the former self is renewed and then one becomes a new creation. I pray and hope the turn out for this camp will be
-  overwhelming, as we spend time in His presence. Hope to see you there!!
- <div class="name">Pheobe Kekeli Nkansah</div>
+  overwhelming, as we spend time in His presence. Hope to see you there!!</p>
+ <div class="name">Phoebe Kekeli Nkansa</div>
   </div>
+  </div>
+    </div>
 
-    </div> 
-  
 </div>
 
 <script type="text/javascript" charset="utf-8">
