@@ -7,7 +7,7 @@ class CamperFormObject
                 :emergency_contact, :emergency_number,
                 :church, :other_church,
                 :occupation,:profession,:other_profession, :school, :school_location, :educational_level,
-                :other_school, :other_school_location
+                :other_school, :other_school_location,:allergies
 
   TAKE_OUT = %w(date_of_birth(1i) date_of_birth(2i) date_of_birth(3i))
 
@@ -76,6 +76,7 @@ class CamperFormObject
     camper.emergency_contact = form_object.emergency_contact
     camper.emergency_number = form_object.emergency_number
     camper.date_of_birth = form_object.date_of_birth
+    camper.allergies=form_object.allergies
         
       
    if form_object.church.downcase == 'other'

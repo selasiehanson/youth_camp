@@ -26,8 +26,9 @@ class Camper
   field :church, type: Hash, default: {} #[:type, :name]
   field :occupation, type: Hash, default: {} #[:type,]
   field :service_group, type:String
+  field :allergies, type:String
 
   validates :first_name, :last_name, :email, :phone_number,
   :residence, :arrival_day, :arrival_time, :date_of_birth, :nationality,
-  :role, :emergency_contact, :emergency_number, :gender, presence: true
+  :role, :emergency_contact, :emergency_number, :allergies, :gender, presence: true
 end

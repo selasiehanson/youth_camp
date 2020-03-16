@@ -125,7 +125,7 @@ class RegistrationController < ApplicationController
     :emergency_contact, :emergency_number,
     :church, :other_church,
     :occupation,:profession,:other_profession, :school,  :school_location, :educational_level, :other_school,
-    :other_school_location,:confirm_email, :confirm_phone_number)
+    :other_school_location,:confirm_email, :confirm_phone_number,:allergies)
   end
 
   def print
