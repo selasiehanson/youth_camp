@@ -108,6 +108,8 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    psych (4.0.4)
+      stringio
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -128,7 +130,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    rdoc (6.0.1)
+    rdoc (6.4.0)
+      psych (>= 4.0.0)
     ref (2.0.0)
     ruby_dep (1.5.0)
     sass (3.2.19)
@@ -149,6 +152,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    stringio (3.0.1)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
